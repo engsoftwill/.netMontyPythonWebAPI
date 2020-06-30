@@ -7,7 +7,7 @@ namespace Codenation.Challenge.Services
         public int RandomInteger(int max)
         {
             Random rnd = new Random();
-            return rnd.Next(0,50) ;
+            return rnd.Next(0,max) ;
         }
     }
 }
