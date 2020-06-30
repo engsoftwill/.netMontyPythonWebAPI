@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+
 
 namespace Codenation.Challenge.Controllers
 {
@@ -22,22 +24,22 @@ namespace Codenation.Challenge.Controllers
         public ActionResult<QuoteView> GetAnyQuote()
         {
             var quote = _service.GetAnyQuote();
-            //MapQuoteViewFromQuote mapper = new MapQuoteViewFromQuote();
-            return new NotFoundResult();
+            MapQuotetoQuoteView quoteView = new MapQuotetoQuoteView();
+            return quoteView.QUotetoQuoteView(quote);
         }
 
         // GET api/quote/{actor}
         [HttpGet("{actor}")]
         public ActionResult<QuoteView> GetAnyQuote(string actor)
         {
-            var quote = _service.GetAnyQuote(actor);
-            //MapQuoteViewFromQuote mapper = new MapQuoteViewFromQuote();
+            Quote quote = _service.GetAnyQuote(actor);
+            MapQuotetoQuoteView mapper = new MapQuotetoQuoteView();
             if (quote == null)
             {
                 return new NotFoundResult();
             }
 
-            return new NotFoundResult();
+            return mapper.QUotetoQuoteView(quote);
         }
 
     }

@@ -27,9 +27,14 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote(string actor)
         {
-            if (actor == null)
+
+            var randomquotes = _context.Quotes
+                .Where(x => x.Actor == actor).ToList();
+            if (randomquotes.Count == 0)
                 return null;
-            return _context.Quotes.Find(actor);
+            var randomquote = _randomService.RandomInteger(randomquotes.Count);
+            return randomquotes[randomquote];
+
         }
     }
 }

@@ -10,12 +10,17 @@ using AutoMapper;
 
 namespace Codenation.Challenge
 {
-    public class AutoMapperQuoteView:Profile
+    public class MapQuotetoQuoteView
     {
-        public AutoMapperQuoteView()
+        public QuoteView QUotetoQuoteView(Quote quote)
 
         {
-            CreateMap<Quote, QuoteView>().ReverseMap();
+            QuoteView quoteview = new QuoteView();
+            quoteview.Actor = quote.Actor;
+            quoteview.Detail = quote.Detail;
+            quoteview.Id = quote.Id;
+            return quoteview;
         }
     }
+
 }
