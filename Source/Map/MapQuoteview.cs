@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Codenation.Challenge.Models;
+using Codenation.Challenge.Services;
+using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
-namespace Source.Map
+
+namespace Codenation.Challenge
 {
-    public class MapQuoteview
+    public class AutoMapperQuoteView:Profile
     {
+        public AutoMapperQuoteView()
+
+        {
+            CreateMap<Quote, QuoteView>().ReverseMap();
+        }
     }
 }
