@@ -17,12 +17,14 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         public Quote GetAnyQuote(string actor)
         {
-            throw new System.NotImplementedException();
+            if (actor == null)
+                return null;
+            return _context.Quotes.Find(actor);
         }
     }
 }
